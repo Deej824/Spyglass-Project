@@ -83,6 +83,7 @@ public class Goal {
     @Override
     public String toString() {
         return "Goal{" +
+                "goalType"+ goalType + '\'' +
                 "title='" + title + '\'' +
                 ", targetSavingsAmount=" + targetSavingsAmount +
                 ", amountSaved=" + amountSaved +
