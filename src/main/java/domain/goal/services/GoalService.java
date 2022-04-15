@@ -4,9 +4,11 @@ import domain.goal.exception.GoalNotFoundException;
 import domain.goal.model.Goal;
 
 public interface GoalService {
-    Goal addGoal (Goal goal);
-    void deleteGoal (Goal goal) throws GoalNotFoundException;
-    Goal editGoal (Goal goal) throws GoalNotFoundException;
-    Goal saveGoal (Goal goal);
-    Iterable<Goal> getAllGoals(Long id);
+    Goal create (Goal goal);
+    void delete (Long id) throws GoalNotFoundException;
+    Goal update (Goal goal) throws GoalNotFoundException;
+    Goal findById (Long id) throws GoalNotFoundException;
+    Goal calculatePercentage(Goal targetSavingsAmount, Goal amountSaved);
+    Goal milestoneCalculation();
+    Iterable<Goal> findAll();
 }
