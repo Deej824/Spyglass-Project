@@ -1,6 +1,16 @@
 package domain.goal.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Goal {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    private Long id;
     private String title;
     private Double targetSavingsAmount;
     private Double amountSaved;
@@ -22,6 +32,14 @@ public class Goal {
         this.notes = notes;
         this.progressBar = progressBar;
         this.goalType = goalType;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public goalType getGoalType() {
@@ -83,12 +101,15 @@ public class Goal {
     @Override
     public String toString() {
         return "Goal{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", targetSavingsAmount=" + targetSavingsAmount +
                 ", amountSaved=" + amountSaved +
                 ", savingsDateGoal=" + savingsDateGoal +
                 ", notes='" + notes + '\'' +
                 ", progressBar=" + progressBar +
+                ", goalType=" + goalType +
                 '}';
     }
 }
+

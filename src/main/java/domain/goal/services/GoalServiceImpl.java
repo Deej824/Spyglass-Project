@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+
 @Service
 public class GoalServiceImpl implements GoalService {
 
@@ -21,40 +22,57 @@ public class GoalServiceImpl implements GoalService {
         this.goalRepo = goalRepo;
     }
 
-    @Override
-    public Goal addGoal(Goal goal) {
-        return null;
-    }
-
-    @Override //are we deleting goal by ID?
-    public void deleteGoal(Goal goal) throws GoalNotFoundException {
-        Optional<Goal> GoalExistOption = goalRepo.findById(id);
-        if (GoalExistOption.isEmpty())
-            throw new GoalNotFoundException("No goal with that id");
-        Goal goal = GoalExistOption.get();
-        goalRepo.delete(goal);
-
-    }
 
     @Override
-    public Goal editGoal(Goal goal) throws GoalNotFoundException {
-        return null;
+    public Goal create(Goal goal) {
+        return goalRepo.save(goal);
+    }
+
+
+    @Override
+    public Goal update(Goal goal) throws GoalNotFoundException {
+        Long id = goal.getId();
+        Optional <Goal> goalExistOption = goalRepo.findById(id);
+        if (goalExistOption.isEmpty())
+            throw new GoalNotFoundException("Goal not found");
+        return goalRepo.save(goal);
     }
 
     @Override
-    public Goal saveGoal(Goal goal) {
+    public Goal findById(Long id) throws GoalNotFoundException {
+        Optional<Goal> goalOptional = goalRepo.findById(id);
+        if (goalOptional.isEmpty())
+            throw new GoalNotFoundException ("Goal not found");
+        return goalOptional.get();
+    }
+
+
+    @Override
+    public Iterable<Goal> findAll() {
+        return goalRepo.findAll();
+    }
+
+    @Override
+    public void delete(Long id) throws GoalNotFoundException {
+        Optional<Goal> goalOptional = goalRepo.findById(id);
+        if(goalOptional.isEmpty())
+            throw new GoalNotFoundException("Goal not found");
+        Goal goalToRemove = goalOptional.get();
+        goalRepo.delete(goalToRemove);
+
+    }
+
+    @Override
+    public Goal calculatePercentage(Goal targetSavingsAmount, Goal amountSaved) {
         return null;
     }
 
     @Override
-    public Iterable<Goal> getAllGoals(Long id) {
+    public Goal milestoneCalculation() {
         return null;
-    }
-
-    private Double calculatePercentage(Double targetSavingsAmount, Double amountSaved) {
-
-        return targetSavingsAmount;
     }
 }
+
+
 
 
