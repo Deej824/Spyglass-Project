@@ -1,4 +1,8 @@
 package domain.goal.exception;
 
-public class GoalNotFoundException {
+public class GoalNotFoundException extends Exception {
+    public GoalNotFoundException(String msg){
+        super(msg);
+    }
 }
+
