@@ -1,4 +1,6 @@
 package domain.goal.repo;
 
-public class GoalRepo {
+import org.springframework.data.repository.CrudRepository;
+
+public interface GoalRepo extends CrudRepository {
 }
