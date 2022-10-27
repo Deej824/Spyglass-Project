@@ -1,4 +1,7 @@
 package domain.user.exception;
 
-public class UserNotFoundException {
+public class UserNotFoundException extends Exception{
+    public UserNotFoundException (String msg) {
+        super(msg);
+    }
 }

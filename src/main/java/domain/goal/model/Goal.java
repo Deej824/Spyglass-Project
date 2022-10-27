@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Goal {
@@ -14,7 +15,7 @@ public class Goal {
     private String title;
     private Double targetSavingsAmount;
     private Double amountSaved;
-    private Double savingsDateGoal;
+    private Date savingsDateGoal;
     private String notes;
     private Double progressBar;
     private goalType goalType;
@@ -24,7 +25,7 @@ public class Goal {
     }
 
     public Goal(String title, Double targetSavingsAmount, Double amountSaved,
-                Double savingsDateGoal, String notes, Double progressBar, goalType goalType) {
+                Date savingsDateGoal, String notes, Double progressBar, goalType goalType) {
         this.title = title;
         this.targetSavingsAmount = targetSavingsAmount;
         this.amountSaved = amountSaved;
@@ -74,11 +75,11 @@ public class Goal {
         this.amountSaved = amountSaved;
     }
 
-    public Double getSavingsDateGoal() {
+    public Date getSavingsDateGoal() {
         return savingsDateGoal;
     }
 
-    public void setSavingsDateGoal(Double savingsDateGoal) {
+    public void setSavingsDateGoal(Date savingsDateGoal) {
         this.savingsDateGoal = savingsDateGoal;
     }
 

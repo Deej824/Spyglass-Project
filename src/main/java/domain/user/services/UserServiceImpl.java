@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findById(Long id) {
+    public User findById(Long id) throws UserNotFoundException {
         Optional<User> userOptional = userRepo.findById(id);
         if(userOptional.isEmpty())
             throw new UserNotFoundException("User not found");
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Long id) throws UserNotFoundException {
         Optional<User> userOptional = userRepo.findById(id);
         if(userOptional.isEmpty())
             throw  new UserNotFoundException("User not found");

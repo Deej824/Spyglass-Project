@@ -46,6 +46,14 @@ public class GoalServiceImpl implements GoalService {
         return goalOptional.get();
     }
 
+    @Override
+    public Goal findByTitle(String title) throws GoalNotFoundException {
+        Optional<Goal> goalOptional = goalRepo.findByTitle("Going to Hawaii");
+        if (goalOptional.isEmpty())
+            throw new GoalNotFoundException ("Goal not found");
+        return goalOptional.get();
+    }
+
 
     @Override
     public Iterable<Goal> findAll() {
